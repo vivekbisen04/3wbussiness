@@ -37,7 +37,7 @@ const AdminDashboard = () => {
     // Render a loading state
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <div className="text-xl">Loading...</div>
+        <div className="text-xl text-gray-700">Loading...</div>
       </div>
     );
   }
@@ -54,44 +54,71 @@ const AdminDashboard = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-center">Admin Dashboard</h1>
-        <div className="bg-white shadow-md rounded-lg overflow-hidden">
+        {/* Header Section */}
+        <header className="flex items-center justify-center mb-8">
+          <h1 className="text-4xl font-bold text-gray-800 ">Admin Dashboard</h1>
+          {/* Optional: Add a button or link here for additional actions */}
+          {/* <button className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+            Add User
+          </button> */}
+        </header>
+
+        {/* Table Container */}
+        <div className="bg-white shadow-md rounded-lg overflow-x-auto">
           <table className="min-w-full bg-white">
             <thead className="bg-gray-800 text-white">
               <tr>
-                <th className="w-1/12 py-3 px-4 uppercase font-semibold text-sm">
+                <th className="py-3 px-6 text-left uppercase font-semibold text-sm">
                   #
                 </th>
-                <th className="w-3/12 py-3 px-4 uppercase font-semibold text-sm">
+                <th className="py-3 px-6 text-left uppercase font-semibold text-sm">
                   Full Name
                 </th>
-                <th className="w-2/12 py-3 px-4 uppercase font-semibold text-sm">
+                <th className="py-3 px-6 text-left uppercase font-semibold text-sm">
                   Social Media
                 </th>
-                <th className="w-3/12 py-3 px-4 uppercase font-semibold text-sm">
+                <th className="py-3 px-6 text-left uppercase font-semibold text-sm">
                   Profile Photo
                 </th>
-                <th className="w-3/12 py-3 px-4 uppercase font-semibold text-sm">
+                <th className="py-3 px-6 text-left uppercase font-semibold text-sm">
                   Created At
                 </th>
               </tr>
             </thead>
             <tbody className="text-gray-700">
               {users.map((user, index) => (
-                <tr key={user._id} className="hover:bg-gray-100">
-                  <td className="py-3 px-4">{index + 1}</td>
-                  <td className="py-3 px-4">{user.fullName}</td>
-                  <td className="py-3 px-4">{user.socialMediaHandle}</td>
-                  <td className="py-3 px-4">
+                <tr
+                  key={user._id}
+                  className={`hover:bg-gray-100 ${
+                    index % 2 === 0 ? "bg-gray-50" : "bg-white"
+                  }`}
+                >
+                  <td className="py-4 px-6">{index + 1}</td>
+                  <td className="py-4 px-6">{user.fullName}</td>
+                  <td className="py-4 px-6">
+                    <a
+                      href={user.socialMediaHandle}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-500 hover:underline"
+                    >
+                      View Social
+                    </a>
+                  </td>
+                  <td className="py-4 px-6 ">
                     <img
                       src={user.profilePhoto}
                       alt={user.fullName}
-                      className="w-12 h-12 object-cover rounded-full"
+                      className="w-12 h-12 object-cover rounded-full border"
                     />
                   </td>
-                  <td className="py-3 px-4">
-                    {new Date(user.createdAt).toLocaleDateString()}{" "}
-                    {new Date(user.createdAt).toLocaleTimeString()}
+                  <td className="py-4 px-6">
+                    <span className="block">
+                      {new Date(user.createdAt).toLocaleDateString()}
+                    </span>
+                    <span className="text-sm text-gray-500">
+                      {new Date(user.createdAt).toLocaleTimeString()}
+                    </span>
                   </td>
                 </tr>
               ))}
@@ -99,7 +126,7 @@ const AdminDashboard = () => {
                 <tr>
                   <td
                     colSpan="5"
-                    className="py-4 px-4 text-center text-gray-500"
+                    className="py-4 px-6 text-center text-gray-500"
                   >
                     No users found.
                   </td>
@@ -108,6 +135,8 @@ const AdminDashboard = () => {
             </tbody>
           </table>
         </div>
+
+        {/* Optional: Pagination or other controls can be added here */}
       </div>
     </div>
   );
