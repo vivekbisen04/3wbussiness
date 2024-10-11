@@ -33,7 +33,9 @@ npm run dev
 
 ```
 #admin credentials
+```
 -email:admin@abc.com
 -password:pass123
+```
 
 
