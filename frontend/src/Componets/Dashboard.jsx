@@ -12,7 +12,9 @@ const AdminDashboard = () => {
     // Define an asynchronous function to fetch user data
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/user"); // GET request to /user
+        const response = await axios.get(
+          "https://threewbussiness.onrender.com/user"
+        ); // GET request to /user
         if (response.data.success) {
           setUsers(response.data.data); // Assuming backend sends { success: true, data: [...] }
         } else {

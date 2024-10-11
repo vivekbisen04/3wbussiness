@@ -29,10 +29,13 @@ export default function AdminLogin() {
 
     try {
       // Make a POST request to the backend for admin login
-      const response = await axios.post("http://localhost:4000/admin/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://threewbussiness.onrender.com/admin/login",
+        {
+          email,
+          password,
+        }
+      );
 
       // Assuming the backend sends back a token
       const { token } = response.data;

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";// Import the custom Axios instance
+import axios from "axios"; // Import the custom Axios instance
 
 export default function AdminSignIn() {
   const navigate = useNavigate();
@@ -29,11 +29,14 @@ export default function AdminSignIn() {
 
     try {
       // Make a POST request to the backend for admin registration
-      const response = await axios.post("http://localhost:4000/admin/signin", {
-        name,
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://threewbussiness.onrender.com/admin/signin",
+        {
+          name,
+          email,
+          password,
+        }
+      );
 
       // Assuming the backend sends back a token
       const { token } = response.data;

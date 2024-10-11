@@ -32,7 +32,7 @@ const UserForm = () => {
     try {
       // Make a POST request using axios
       const response = await axios.post(
-        "http://localhost:4000/user/add",
+        "https://threewbussiness.onrender.com/user/add",
         formData,
         {
           headers: {
